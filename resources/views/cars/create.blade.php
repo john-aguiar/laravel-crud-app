@@ -32,8 +32,8 @@
                 <input type="number" class="form-control" id="price" name="price" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-            <a href="{{ route('cars.index') }}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-success">Cadastrar</button>
+            <a href="{{ route('cars.index') }}" class="btn btn-danger">Cancelar</a>
         </form>
     </div>
 </body>

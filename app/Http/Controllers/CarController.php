@@ -29,7 +29,6 @@ class CarController extends Controller
             'price' => 'required',
         ]);
         Car::create($request->all());
-
         return redirect()->route('cars.index')->with('success', 'Carro cadastrado com sucesso!');
     }
 
@@ -67,3 +66,6 @@ class CarController extends Controller
         return redirect()->route('cars.index')->with('success', 'Carro excluído com sucesso!');
     }
 }
+
+
+
