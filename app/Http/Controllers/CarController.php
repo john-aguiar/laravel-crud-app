@@ -40,25 +40,30 @@ class CarController extends Controller
     }
 
     // Atualizar um carro no banco de dados
-    public function update(Request $request, Car $car)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        // Validação
+        $validated = $request->validate([
             'brand' => 'required|string|max:255',
             'model' => 'required|string|max:255',
-            'year' => 'required|integer|digits:4',
-            'price' => 'required|numeric|min:0',
+            'year' => 'required|integer',
+            'price' => 'required|numeric',
         ]);
 
-        $car->update($request->all());
+        // Atualização no banco
+        $car = Car::findOrFail($id);
+        $car->update($validated);
 
+        // Redirecionamento com mensagem de sucesso
         return redirect()->route('cars.index')->with('success', 'Carro atualizado com sucesso!');
     }
+
+
 
     // Excluir um carro
     public function destroy(Car $car)
     {
         $car->delete();
-
         return redirect()->route('cars.index')->with('success', 'Carro excluído com sucesso!');
     }
 }
